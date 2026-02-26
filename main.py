@@ -1,6 +1,7 @@
 import pygame
 import constants
 from logger import log_state
+import circleshape
 
 def main():
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
@@ -10,6 +11,9 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
 
+    pygame.time.Clock()
+    dt = 0
+
     while True:
         log_state()
         for event in pygame.event.get():
@@ -18,6 +22,7 @@ def main():
             pass
         screen.fill("black")
         pygame.display.flip()
-
+        dt = pygame.time.Clock().tick(60)/1000
+        
 if __name__ == "__main__":
     main()
